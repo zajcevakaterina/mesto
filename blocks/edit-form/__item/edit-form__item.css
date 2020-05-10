@@ -1,0 +1,17 @@
+.edit-form__item {
+  font-family: inherit;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  height: 28px;
+  margin: 0;
+  width: 100%;
+}
+
+.edit-form__item:first-of-type {
+  margin-bottom: 30px;
+}
+
+.edit-form__item:focus {
+  outline-color:#E5E5E5;
+  outline-width: 1px;
+}

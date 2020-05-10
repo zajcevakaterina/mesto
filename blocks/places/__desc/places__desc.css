@@ -1,0 +1,7 @@
+.places__desc {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 18px 31px 18px;
+}
