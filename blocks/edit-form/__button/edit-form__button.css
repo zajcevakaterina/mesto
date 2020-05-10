@@ -5,13 +5,21 @@
   width: 100%;
   border: 0;
   text-align: center;
-  padding: 14px 0;
-  margin: 60px 0 0;
-  font-size: 18px;
+  padding: 10px 0;
+  margin: 40px 0 0;
+  font-size: 16px;
   line-height: 1.22;
   border-radius: 2px;
 }
 
 .edit-form__button:hover {
   opacity: .8;
+}
+
+@media screen and (min-width: 480px) {
+  .edit-form__button {
+    padding: 14px 0;
+    margin: 60px 0 0;
+    font-size: 18px;
+  }
 }

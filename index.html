@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./vendor/fonts/fonts.css">
   <link rel="stylesheet" href="./pages/index.css">
+
   <title>Mesto Russia</title>
 </head>
 
@@ -19,17 +20,15 @@
           <input
           type="text"
           name="profile-name"
-          class="edit-form__item"
-          value="Жак-Ив Кусто"
+          class="edit-form__item edit-form__item_el_name"
           placeholder="Имя и фамилия"
           required>
 
           <input
           type="text"
-          name="profile-subtitle"
-          value="Исследователь океана"
+          name="profile-job"
           placeholder="Род занятий"
-          class="edit-form__item">
+          class="edit-form__item edit-form__item_el_job">
 
           <button
           type="submit"
@@ -39,7 +38,7 @@
       </div>
     </div>
     <div class="editor-form"></div>
-    <header class="header width">
+    <header class="header">
       <img src="./images/header/logo.svg" alt="Логотип проекта Место Russia" class="header__logo">
     </header>
 
@@ -68,15 +67,15 @@
           </div>
 
           <div class="places__card">
-            <img src="./images/places/kirill-pershin-1088404-unsplash.jpg" alt="Фотография Карачаево-Черкесии" class="places__image">
+            <img src="./images/places/Baikal.jpg" alt="Фотография Карачаево-Черкесии" class="places__image">
             <div class="places__desc">
-              <h2 class="places__title" title="Карачаево-Черкесия">Карачаево-Черкесия</h2>
+              <h2 class="places__title">Байкал</h2>
               <button class="places__like button-hover"></button>
             </div>
           </div>
 
           <div class="places__card">
-            <img src="./images/places/Kazan.jpg" alt="Фотография Казани" class="places__image">
+            <img src="./images/places/St-Petersburg.jpg" alt="Фотография Казани" class="places__image">
             <div class="places__desc">
               <h2 class="places__title" title="Санкт-Петербург">Санкт-Петербург</h2>
               <button class="places__like button-hover"></button>
@@ -84,7 +83,7 @@
           </div>
 
           <div class="places__card">
-            <img src="./images/places/kirill-pershin-1088404-unsplash.jpg" alt="Фотография Карачаево-Черкесии" class="places__image">
+            <img src="./images/places/Moscow.jpg" alt="Фотография Карачаево-Черкесии" class="places__image">
             <div class="places__desc">
               <h2 class="places__title">Москва</h2>
               <button class="places__like button-hover"></button>
@@ -92,7 +91,7 @@
           </div>
 
           <div class="places__card">
-            <img src="./images/places/Kazan.jpg" alt="Фотография Казани" class="places__image">
+            <img src="./images/places/Altay.jpg" alt="Фотография Казани" class="places__image">
             <div class="places__desc">
               <h2 class="places__title">Алтай</h2>
               <button class="places__like button-hover"></button>
@@ -100,7 +99,7 @@
           </div>
 
           <div class="places__card">
-            <img src="./images/places/kirill-pershin-1088404-unsplash.jpg" alt="Фотография Карачаево-Черкесии" class="places__image">
+            <img src="./images/places/Kamchatka.jpg" alt="Фотография Карачаево-Черкесии" class="places__image">
             <div class="places__desc">
               <h2 class="places__title">Камчатка</h2>
               <button class="places__like button-hover"></button>
@@ -113,6 +112,8 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
+
+  <script src="./index.js"></script>
 </body>
 
 </html>

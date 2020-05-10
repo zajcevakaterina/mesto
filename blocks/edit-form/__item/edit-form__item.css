@@ -1,10 +1,15 @@
+@import url(./_el_name/edit-form__item_el_name.css);
+@import url(./_el_job/edit-form__item_el_job.css);
+
 .edit-form__item {
   font-family: inherit;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
-  height: 28px;
+  height: 20px;
   margin: 0;
   width: 100%;
+  font-size: 14px;
+  line-height: 1.21;
 }
 
 .edit-form__item:first-of-type {
@@ -15,3 +20,10 @@
   outline-color:#E5E5E5;
   outline-width: 1px;
 }
+
+@media screen and (min-width: 480px) {
+  .edit-form__item {
+    height: 28px;
+  }
+}
+
