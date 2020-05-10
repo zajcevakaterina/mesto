@@ -1,0 +1,17 @@
+.width {
+  width: calc(100% - 38px);
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .width {
+    width: calc(100% - 72px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .width {
+    width: calc(100% - 380px);
+  }
+}
+
