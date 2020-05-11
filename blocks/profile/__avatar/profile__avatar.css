@@ -3,17 +3,14 @@
   width: 120px;
   height: auto;
   margin: 42px 0 14px;
+
+  align-self: center;
 }
 
 @media screen and (min-width: 768px) {
   .profile__avatar {
-    margin: 40px 30px 50px 0;
+    margin: 0;
+    grid-row: span 2;
   }
 }
-
-/* @media screen and (min-width: 1024px) {
-  .profile__avatar {
-    margin-right: 30px;
-  }
-} */
 
