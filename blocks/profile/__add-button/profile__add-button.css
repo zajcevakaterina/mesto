@@ -8,11 +8,20 @@
   border: 2px solid #fff;
   color: #fff;
   margin: 0 auto 36px;
+  align-self: center;
+  box-sizing: border-box;
 }
 
 @media screen and (min-width: 768px) {
   .profile__add-button {
-    width: 150px;
+    width: 100px;
     margin: 0;
+    grid-row: span 2;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile__add-button {
+    width: 150px;
   }
 }

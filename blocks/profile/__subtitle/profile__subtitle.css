@@ -16,6 +16,8 @@
     font-size: 18px;
     text-align: left;
     max-width: 350px;
+    grid-row: 2;
+    grid-column: 2;
   }
 }
 

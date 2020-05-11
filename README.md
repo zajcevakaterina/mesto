@@ -1,4 +1,4 @@
-# MESTO - тут ссылка
+# MESTO - https://zajcevakaterina.github.io/mesto/index.html
 ## Автор проекта - Екатерина Зайцева.
 *Выполнен в рамках курса на Яндекс.Практикум.*
 

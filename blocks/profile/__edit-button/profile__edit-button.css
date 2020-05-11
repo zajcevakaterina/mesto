@@ -6,6 +6,7 @@
   width: 18px;
   height: 18px;
   background-size: contain;
+  margin-top: 4px;
 }
 
 @media screen and (min-width: 768px) {
