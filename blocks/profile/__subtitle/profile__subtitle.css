@@ -27,8 +27,3 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
-  .profile__subtitle {
-    max-width: 650px;
-  }
-}
