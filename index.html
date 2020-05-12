@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./vendor/fonts/fonts.css">
   <link rel="stylesheet" href="./pages/index.css">
 
   <title>Mesto Russia</title>
@@ -12,9 +11,80 @@
 
 <body>
   <div class="root">
+    <header class="header root__section">
+      <img src="./images/header/logo.svg" alt="Слово Место латиницей и выше слово Russia. Логотип." class="header__logo">
+    </header>
+
+    <main class="main root__section">
+      <section class="profile">
+          <img src="./images/profile/avatar.jpg" alt="Фотография путешественника Жак-Ив Кусто." class="profile__avatar">
+          <div class="profile__title">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__edit-button"></button>
+          </div>
+          <p class="profile__subtitle">Исследователь океана</p>
+        <button type="button" class="profile__add-button"></button>
+      </section>
+
+      <section class="places">
+          <div class="places__card">
+            <img src="./images/places/kazan.jpg" alt="Фотография ворот с солнцем и луной в Казани." class="places__image">
+            <div class="places__desc">
+              <h2 class="places__title">Казань</h2>
+              <button type="button" class="places__like"></button>
+            </div>
+          </div>
+
+          <div class="places__card">
+            <img src="./images/places/baikal.jpg" alt="Фотография замерзшего озера Байкал." class="places__image">
+            <div class="places__desc">
+              <h2 class="places__title">Байкал</h2>
+              <button type="button" class="places__like"></button>
+            </div>
+          </div>
+
+          <div class="places__card">
+            <img src="./images/places/st-petersburg.jpg" alt="Фотография старого пятиэтажного углового дома в Санкт-Петербурге."
+                class="places__image">
+            <div class="places__desc">
+              <h2 class="places__title" title="Санкт-Петербург">Санкт-Петербург</h2>
+              <button type="button" class="places__like"></button>
+            </div>
+          </div>
+
+          <div class="places__card">
+            <img src="./images/places/moscow.jpg" alt="Фотография Собора Василия Блаженного в Москве" class="places__image">
+            <div class="places__desc">
+              <h2 class="places__title">Москва</h2>
+              <button type="button" class="places__like"></button>
+            </div>
+          </div>
+
+          <div class="places__card">
+            <img src="./images/places/altay.jpg" alt="Фотография зеленого густого леса на фоне голубых гор в Алтае." class="places__image">
+            <div class="places__desc">
+              <h2 class="places__title">Алтай</h2>
+              <button type="button" class="places__like"></button>
+            </div>
+          </div>
+
+          <div class="places__card">
+            <img src="./images/places/kamchatka.jpg" alt="Фотография серфингиста, сидящего на берегу океана на Камчатке." class="places__image">
+            <div class="places__desc">
+              <h2 class="places__title">Камчатка</h2>
+              <button type="button" class="places__like"></button>
+            </div>
+          </div>
+      </section>
+    </main>
+
+    <footer class="footer root__section">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+
     <div class="popup">
       <div class="popup__container">
-        <div class="popup__close-button button-hover"></div>
+        <button type="button" class="popup__close-button"></button>
         <form class="edit-form">
           <h2 class="edit-form__heading">Редактировать профиль</h2>
           <input
@@ -33,84 +103,12 @@
           <button
           type="submit"
           value="Сохранить форму"
-          class="edit-form__button button-hover">Сохранить</button>
+          class="edit-form__button">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="editor-form"></div>
-    <header class="header">
-      <img src="./images/header/logo.svg" alt="Логотип проекта Место Russia" class="header__logo">
-    </header>
 
-    <main class="main width">
-      <section class="profile">
-        <!-- <div class="profile__content"> -->
-          <img src="./images/profile/Avatar.jpg" alt="Аватар путешественника" class="profile__avatar">
-        <!-- <div class="profile__info"> -->
-          <div class="profile__title">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button button-hover"></button>
-          </div>
-          <p class="profile__subtitle">Исследователь океана</p>
-        <!-- </div> -->
-        <!-- </div> -->
-        <button class="profile__add-button button-hover"></button>
-      </section>
 
-      <section class="places">
-          <div class="places__card">
-            <img src="./images/places/Kazan.jpg" alt="Фотография Казани" class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title">Казань</h2>
-              <button class="places__like button-hover"></button>
-            </div>
-          </div>
-
-          <div class="places__card">
-            <img src="./images/places/Baikal.jpg" alt="Фотография Карачаево-Черкесии" class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title">Байкал</h2>
-              <button class="places__like button-hover"></button>
-            </div>
-          </div>
-
-          <div class="places__card">
-            <img src="./images/places/St-Petersburg.jpg" alt="Фотография Казани" class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title" title="Санкт-Петербург">Санкт-Петербург</h2>
-              <button class="places__like button-hover"></button>
-            </div>
-          </div>
-
-          <div class="places__card">
-            <img src="./images/places/Moscow.jpg" alt="Фотография Карачаево-Черкесии" class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title">Москва</h2>
-              <button class="places__like button-hover"></button>
-            </div>
-          </div>
-
-          <div class="places__card">
-            <img src="./images/places/Altay.jpg" alt="Фотография Казани" class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title">Алтай</h2>
-              <button class="places__like button-hover"></button>
-            </div>
-          </div>
-
-          <div class="places__card">
-            <img src="./images/places/Kamchatka.jpg" alt="Фотография Карачаево-Черкесии" class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title">Камчатка</h2>
-              <button class="places__like button-hover"></button>
-            </div>
-          </div>
-      </section>
-    </main>
-
-    <footer class="footer width">
-      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-    </footer>
   </div>
 
   <script src="./index.js"></script>

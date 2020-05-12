@@ -10,7 +10,15 @@
   margin: 0 auto 36px;
   align-self: center;
   box-sizing: border-box;
+  border-radius: 2px;
 }
+
+.profile__add-button:hover {
+  opacity: .6;
+  transition: opacity 200ms linear;
+  cursor: pointer;
+}
+
 
 @media screen and (min-width: 768px) {
   .profile__add-button {

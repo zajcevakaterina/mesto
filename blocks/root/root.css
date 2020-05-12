@@ -1,3 +1,5 @@
+@import url(./__section/root__section.css);
+
 .root {
     font-family: 'Inter', Arial, sans-serif;
     min-width: 320px;
@@ -8,3 +10,10 @@
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
 }
+
+/* @media screen and (min-width: 1281px) {
+  .root {
+    padding-left: calc((100% - 1280px)/2);
+    padding-right: calc((100% - 1280px)/2);
+  }
+} */

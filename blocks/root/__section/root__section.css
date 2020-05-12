@@ -1,0 +1,18 @@
+.root__section {
+  max-width: calc(100% - 38px);
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .root__section {
+    width: calc(100% - 144px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .root__section {
+    width: calc(100% - 390px);
+    max-width: 890px;
+  }
+}
+

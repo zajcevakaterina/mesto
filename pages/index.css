@@ -1,7 +1,7 @@
+@import url(../vendor/fonts/fonts.css);
+
 @import url(../vendor/normalize.css);
 @import url(../blocks/root/root.css);
-@import url(../blocks/width/width.css);
-@import url(../blocks/button-hover/button-hover.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);

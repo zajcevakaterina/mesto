@@ -7,3 +7,9 @@
   background-size: contain;
   border: none;
 }
+
+.places__like:hover {
+  opacity: .6;
+  transition: opacity 200ms linear;
+  cursor: pointer;
+}
