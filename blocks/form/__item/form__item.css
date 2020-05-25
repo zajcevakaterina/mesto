@@ -16,6 +16,10 @@
   box-sizing: border-box;
 }
 
+.form__item:invalid{
+  box-shadow:none;
+}
+
 .form__item::-webkit-input-placeholder {
   color: #c4c4c4;
 }
