@@ -3,5 +3,6 @@
         "opentype",
         "truetype",
         "woff"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }

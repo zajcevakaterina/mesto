@@ -13,3 +13,7 @@
   transition: opacity 200ms linear;
   cursor: pointer;
 }
+
+.places__like:focus {
+  outline: none;
+}

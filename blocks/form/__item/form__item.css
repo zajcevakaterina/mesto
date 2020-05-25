@@ -1,0 +1,51 @@
+@import url(./_el/form__item_el_job.css);
+@import url(./_el/form__item_el_name.css);
+@import url(./_el/form__item_el_place-link.css);
+@import url(./_el/form__item_el_place-name.css);
+
+.form__item {
+  font-family: inherit;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  height: 20px;
+  margin: 0;
+  width: 100%;
+  font-size: 12px;
+  line-height: 1.25;
+  padding-bottom: 4px;
+  box-sizing: border-box;
+}
+
+.form__item::-webkit-input-placeholder {
+  color: #c4c4c4;
+}
+
+.form__item::-moz-placeholder {
+  color: #c4c4c4;
+}
+
+.form__item:-moz-placeholder {
+  color: #c4c4c4;
+}
+
+.form__item:-ms-input-placeholder {
+  color: #c4c4c4;
+}
+
+.form__item:first-of-type {
+  margin-bottom: 30px;
+}
+
+.form__item:focus {
+  outline-color:#E5E5E5;
+  outline-width: 1px;
+}
+
+@media screen and (min-width: 480px) {
+  .form__item {
+    height: 28px;
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}
+

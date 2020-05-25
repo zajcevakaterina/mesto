@@ -1,5 +1,10 @@
+@import url(./_type/popup_type_add-place.css);
+@import url(./_type/popup_type_edit-profile.css);
+@import url(./_type/popup_type_see-image.css);
 @import url(./__container/popup__container.css);
 @import url(./__close-button/popup__close-button.css);
+@import url(./__image/popup__image.css);
+@import url(./__image-caption/popup__image-caption.css);
 
 .popup {
   position: fixed;
@@ -11,6 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, .5);
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .5s linear, opacity .5s linear;
 }

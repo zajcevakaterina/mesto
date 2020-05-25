@@ -1,18 +1,9 @@
+@import url(./_visibility/popup__container_visibility_transparent.css);
+@import url(./_visibility/popup__container_visibility_visible.css);
+
 .popup__container {
-  width: calc(100% - 70px);
-  min-height: 270px;
-  background: #fff;
   box-sizing: border-box;
-  border-radius: 10px;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  padding: 20px 22px 22px;
   position: relative;
+  margin: 0;
 }
 
-@media screen and (min-width: 480px) {
-  .popup__container {
-    width: 430px;
-    padding: 34px 36px 36px;
-    min-height: 330px;
-  }
-}

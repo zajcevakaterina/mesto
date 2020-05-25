@@ -12,69 +12,33 @@
 <body>
   <div class="root">
     <header class="header root__section">
-      <img src="./images/header/logo.svg" alt="Слово Место латиницей и выше слово Russia. Логотип." class="header__logo">
+      <img src="./images/header/logo.svg" alt="Слово Место латиницей и выше слово Russia. Логотип."
+        class="header__logo">
     </header>
 
     <main class="main root__section">
       <section class="profile">
-          <img src="./images/profile/user-avatar.jpg" alt="Фотография путешественника Жак-Ив Кусто." class="profile__avatar">
-          <div class="profile__title">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__edit-button"></button>
-          </div>
-          <p class="profile__subtitle">Исследователь океана</p>
+        <img src="./images/profile/user-avatar.jpg" alt="Фотография путешественника Жак-Ив Кусто."
+          class="profile__avatar">
+        <div class="profile__title">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__edit-button"></button>
+        </div>
+        <p class="profile__subtitle">Исследователь океана</p>
         <button type="button" class="profile__add-button"></button>
       </section>
 
       <section class="places">
+        <template class="places-card-template">
           <div class="places__card">
-            <img src="./images/places/1_kazan.jpg" alt="Фотография ворот с солнцем и луной в Казани." class="places__image">
+            <button type="button" class="places__delete-button"></button>
+            <img alt="" class="places__image">
             <div class="places__desc">
-              <h2 class="places__title">Казань</h2>
+              <h2 class="places__title"></h2>
               <button type="button" class="places__like"></button>
             </div>
           </div>
-
-          <div class="places__card">
-            <img src="./images/places/2_baikal.jpg" alt="Фотография замерзшего озера Байкал." class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title">Байкал</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </div>
-
-          <div class="places__card">
-            <img src="./images/places/3_st-petersburg.jpg" alt="Фотография старого пятиэтажного углового дома в Санкт-Петербурге."
-                class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title" title="Санкт-Петербург">Санкт-Петербург</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </div>
-
-          <div class="places__card">
-            <img src="./images/places/4_moscow.jpg" alt="Фотография Собора Василия Блаженного в Москве" class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title">Москва</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </div>
-
-          <div class="places__card">
-            <img src="./images/places/5_altay.jpg" alt="Фотография зеленого густого леса на фоне голубых гор в Алтае." class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title">Алтай</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </div>
-
-          <div class="places__card">
-            <img src="./images/places/6_kamchatka.jpg" alt="Фотография серфингиста, сидящего на берегу океана на Камчатке." class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title">Камчатка</h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </div>
+        </template>
       </section>
     </main>
 
@@ -82,33 +46,49 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
-      <div class="popup__container">
-        <button type="button" class="popup__close-button"></button>
-        <form class="edit-form">
-          <h2 class="edit-form__heading">Редактировать профиль</h2>
-          <input
-          type="text"
-          name="profile-name"
-          class="edit-form__item edit-form__item_el_name"
-          placeholder="Имя и фамилия"
-          required>
+    <section class="popups">
+      <!-- попап редактирования профиля -->
+      <div class="popup popup_type_edit-profile">
+        <div class="popup__container popup__container_visibility_visible">
+          <button type="button" class="popup__close-button"></button>
+          <form class="form form_type_edit-profile">
+            <h2 class="form__heading">Редактировать профиль</h2>
+            <input type="text" name="profile-name" class="form__item form__item_el_name" placeholder="Имя и фамилия"
+              required>
 
-          <input
-          type="text"
-          name="profile-job"
-          placeholder="Род занятий"
-          class="edit-form__item edit-form__item_el_job">
+            <input type="text" name="profile-job" placeholder="Род занятий" class="form__item form__item_el_job">
 
-          <button
-          type="submit"
-          value="Сохранить форму"
-          class="edit-form__button">Сохранить</button>
-        </form>
+            <button type="submit" value="Сохранить форму"
+              class="form__button form__button_type_edit-profile">Сохранить</button>
+          </form>
+        </div>
       </div>
-    </div>
 
+      <!-- попап добавления карточки места -->
+      <div class="popup popup_type_add-place">
+        <div class="popup__container popup__container_visibility_visible">
+          <button type="button" class="popup__close-button"></button>
+          <form class="form form_type_add-place">
+            <h2 class="form__heading">Новое место</h2>
+            <input type="text" name="place-name" class="form__item form__item_el_place-name" placeholder="Название"
+              required>
 
+            <input type="text" name="profile-job" placeholder="Ссылка на картинку"
+              class="form__item form__item_el_place-link">
+            <button type="submit" value="Сохранить форму"
+              class="form__button form__button_type_add-place">Создать</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- попап просмотра фотографии -->
+      <div class="popup popup_type_see-image">
+        <figure class="popup__container popup__container_visibility_transparent">
+          <button type="button" class="popup__close-button"></button>
+          <img alt="" class="popup__image">
+          <figcaption class="popup__image-caption"></figcaption>
+      </div>
+    </section>
   </div>
 
   <script src="./index.js"></script>

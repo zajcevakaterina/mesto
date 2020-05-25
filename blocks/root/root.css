@@ -3,6 +3,7 @@
 .root {
     font-family: 'Inter', Arial, sans-serif;
     min-width: 320px;
+    min-height: 100vh;
     background: #000;
     color: #fff;
     margin: 0 auto;
@@ -11,9 +12,3 @@
     box-sizing: border-box;
 }
 
-/* @media screen and (min-width: 1281px) {
-  .root {
-    padding-left: calc((100% - 1280px)/2);
-    padding-right: calc((100% - 1280px)/2);
-  }
-} */

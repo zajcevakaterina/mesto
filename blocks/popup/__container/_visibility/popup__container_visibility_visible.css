@@ -1,0 +1,16 @@
+.popup__container_visibility_visible {
+  width: calc(100% - 80px);
+  min-height: 258px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  padding: 30px 20px;
+}
+
+@media screen and (min-width: 480px) {
+  .popup__container_visibility_visible {
+    width: 430px;
+    padding: 34px 36px 36px;
+    max-height: 330px;
+  }
+}

@@ -1,8 +1,10 @@
 @import url(./__card/places__card.css);
 @import url(./__image/places__image.css);
+@import url(./__delete-button/places__delete-button.css);
 @import url(./__desc/places__desc.css);
 @import url(./__title/places__title.css);
 @import url(./__like/places__like.css);
+@import url(./__like/_active/places__like_active.css);
 
 .places {
   display: grid;
