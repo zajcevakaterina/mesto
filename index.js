@@ -58,18 +58,18 @@ const initialCards = [
 ];
 
 // РЕДАКТИРОВАНИЕ ПРОФАЙЛА
-function setInputValue() { // установка начальных данных в форме
+const setEditFormInputValue = function () { // установка начальных данных в форме
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
 
-function formSubmitHandler(e) { // сохранение данных, введенных пользователем
+const editFormSubmitHandler = function(e) { // сохранение данных, введенных пользователем
   e.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
 }
 
-editProfileForm.addEventListener('submit', formSubmitHandler);
+editProfileForm.addEventListener('submit', editFormSubmitHandler);
 
 // УПРАВЛЕНИЕ ПОПАПАМИ
 // Открытие/закрытие попапов
@@ -81,7 +81,7 @@ const popupToggle = function (currentPopup) {
 
 editButton.addEventListener('click', function () { // попап редактирования профиля
   popupToggle(popupEditProfile);
-  setInputValue();
+  setEditFormInputValue();
 });
 
 addPlaceButton.addEventListener('click', function () {
