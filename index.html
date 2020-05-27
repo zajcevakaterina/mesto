@@ -29,16 +29,7 @@
       </section>
 
       <section class="places">
-        <template class="places-card-template">
-          <div class="places__card">
-            <button type="button" class="places__delete-button"></button>
-            <img alt="" class="places__image">
-            <div class="places__desc">
-              <h2 class="places__title"></h2>
-              <button type="button" class="places__like"></button>
-            </div>
-          </div>
-        </template>
+
       </section>
     </main>
 
@@ -46,15 +37,25 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
+    <template class="places-card-template">
+      <div class="places__card">
+        <button type="button" class="places__delete-button"></button>
+        <img alt="" class="places__image">
+        <div class="places__desc">
+          <h2 class="places__title"></h2>
+          <button type="button" class="places__like"></button>
+        </div>
+      </div>
+    </template>
+
     <section class="popups">
       <!-- попап редактирования профиля -->
       <div class="popup popup_type_edit-profile">
         <div class="popup__container popup__container_visibility_visible">
           <button type="button" class="popup__close-button"></button>
-          <form class="form form_type_edit-profile">
+          <form class="form form_type_edit-profile" name="edit-profile-form">
             <h2 class="form__heading">Редактировать профиль</h2>
-            <input type="text" name="profile-name" class="form__item form__item_el_name" placeholder="Имя и фамилия"
-              required>
+            <input type="text" name="profile-name" class="form__item form__item_el_name" placeholder="Имя и фамилия">
 
             <input type="text" name="profile-job" placeholder="Род занятий" class="form__item form__item_el_job">
 
@@ -68,11 +69,10 @@
       <div class="popup popup_type_add-place">
         <div class="popup__container popup__container_visibility_visible">
           <button type="button" class="popup__close-button"></button>
-          <form class="form form_type_add-place">
+          <form class="form form_type_add-place" name="add-place-form">
             <h2 class="form__heading">Новое место</h2>
-            <input type="text" name="place-name" class="form__item form__item_el_place-name" placeholder="Название"
-              required>
-
+            <input type="text" name="place-name" class="form__item form__item_el_place-name" placeholder="Название">
+<!-- атрибут required пока что убрала, чтобы не мешать попапу, так как его не было в ТЗ и это была моя выдумка :) -->
             <input type="text" name="profile-job" placeholder="Ссылка на картинку"
               class="form__item form__item_el_place-link">
             <button type="submit" value="Сохранить форму"
@@ -90,8 +90,8 @@
       </div>
     </section>
   </div>
-
-  <script src="./index.js"></script>
+  <script src="./scripts/initialCardsData.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>
