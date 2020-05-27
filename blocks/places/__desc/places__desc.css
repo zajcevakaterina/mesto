@@ -4,4 +4,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 25px 18px 31px 18px;
+  min-height: 84px;
+  box-sizing: border-box;
 }

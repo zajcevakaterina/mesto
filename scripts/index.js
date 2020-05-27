@@ -101,14 +101,14 @@ const createCardElement = (el) => { // создание карточки из ш
   return placesCardItem;
 }
 
-const prependCardToDOM = (el) => { // добавление карточки в DOM
+const prependCardToDOM = (DOMContainer, el) => { // добавление карточки в DOM
   const placesCardItem = createCardElement(el);
-  places.prepend(placesCardItem);
+  DOMContainer.prepend(placesCardItem);
 }
 
 const createPlacesCards = (arr) => { // создание карточек из данных в массиве
   arr.forEach((el) => {
-    prependCardToDOM(el);
+    prependCardToDOM(places, el);
   });
 }
 
@@ -118,6 +118,6 @@ addPlaceForm.addEventListener('submit', (e) => { //создание карточ
   e.preventDefault();
   const link = userPlaceLink.value;
   const name = userPlaceName.value;
-  createPlacesCards([{ link: link, name: name }]);
+  prependCardToDOM(places, {link, name});
 })
 
