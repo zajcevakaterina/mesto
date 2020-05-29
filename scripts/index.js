@@ -101,16 +101,17 @@ const createCardElement = (el) => { // создание карточки из ш
   return placesCardItem;
 }
 
-const prependCardToDOM = (DOMContainer, el) => { // добавление карточки в DOM
-  const placesCardItem = createCardElement(el);
-  DOMContainer.prepend(placesCardItem);
+const prependCardToDOM = function(DOMContainer, card) { // добавление карточки в DOM. теперь функция может вставлять, какую угодно карточку (или элемент)
+  DOMContainer.prepend(card);
 }
 
 const createPlacesCards = (arr) => { // создание карточек из данных в массиве
   arr.forEach((el) => {
-    prependCardToDOM(places, el);
+    prependCardToDOM(places, createCardElement(el));
   });
 }
+// надеюсь, в этот раз поняла правильно. чтобы функция prependCardToDom взяла нужную нам карточку с местом, вторым аргументом вызывается ее создание
+// это уже последняя итерация проверки, пожаалуйста, не отправляйте меня в академ :)
 
 createPlacesCards(initialCards); //создание карточек "из коробки" при загрузке сайте
 
@@ -118,6 +119,6 @@ addPlaceForm.addEventListener('submit', (e) => { //создание карточ
   e.preventDefault();
   const link = userPlaceLink.value;
   const name = userPlaceName.value;
-  prependCardToDOM(places, {link, name});
+  prependCardToDOM(places, createCardElement({link, name}));
 })
 
