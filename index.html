@@ -53,11 +53,39 @@
       <div class="popup popup_type_edit-profile">
         <div class="popup__container popup__container_visibility_visible">
           <button type="button" class="popup__close-button"></button>
-          <form class="form form_type_edit-profile" name="edit-profile-form">
+          <form class="form form_type_edit-profile" name="edit-profile-form" novalidate>
             <h2 class="form__heading">Редактировать профиль</h2>
-            <input type="text" name="profile-name" class="form__item form__item_el_name" placeholder="Имя и фамилия">
+            <label class="form__field">
+              <input
+                type="text"
+                name="profile-name"
+                id="profile-name"
+                class="form__item form__item_el_name"
+                placeholder="Имя и фамилия"
+                minlength="2"
+                maxlength="40"
+                required>
+              <span
+                class="form__item-error"
+                id="profile-name-error"></span>
+            </label>
 
-            <input type="text" name="profile-job" placeholder="Род занятий" class="form__item form__item_el_job">
+
+            <label class="form__field">
+              <input
+                type="text"
+                name="profile-job"
+                id="profile-job"
+                placeholder="Род занятий"
+                class="form__item form__item_el_job"
+                minlength="2"
+                maxlength="200"
+                required>
+              <span
+                class="form__item-error"
+                id="profile-job-error"></span>
+            </label>
+
 
             <button type="submit" value="Сохранить форму"
               class="form__button form__button_type_edit-profile">Сохранить</button>
@@ -69,12 +97,35 @@
       <div class="popup popup_type_add-place">
         <div class="popup__container popup__container_visibility_visible">
           <button type="button" class="popup__close-button"></button>
-          <form class="form form_type_add-place" name="add-place-form">
+          <form class="form form_type_add-place" name="add-place-form" novalidate>
             <h2 class="form__heading">Новое место</h2>
-            <input type="text" name="place-name" class="form__item form__item_el_place-name" placeholder="Название">
+            <label class="form__field">
+              <input
+              type="text"
+              name="place-name"
+              id="place-name"
+              class="form__item form__item_el_place-name"
+              minlength="1"
+              maxlength="30"
+              placeholder="Название"
+              required>
+            <span
+              class="form__item-error"
+              id="place-name-error"></span>
+            </label>
 
-            <input type="text" name="profile-job" placeholder="Ссылка на картинку"
-              class="form__item form__item_el_place-link">
+            <label class="form__field">
+              <input type="url"
+              name="place-link"
+              id="place-link"
+              placeholder="Ссылка на картинку"
+              class="form__item form__item_el_place-link"
+              required>
+            <span
+              class="form__item-error"
+              id="place-link-error"></span>
+            </label>
+
             <button type="submit" value="Сохранить форму"
               class="form__button form__button_type_add-place">Создать</button>
           </form>
@@ -91,6 +142,8 @@
     </section>
   </div>
   <script src="./scripts/initialCardsData.js"></script>
+  <script src="./scripts/validationOptions.js"></script>
+  <script src="./scripts/validation.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 

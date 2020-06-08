@@ -1,0 +1,16 @@
+.form__item-error {
+  font-size: 10px;
+  line-height: 1.25;
+  color: #f00;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  opacity: 0;
+  transition: opacity .2s linear;
+}
+
+@media screen and (min-width: 480px) {
+  .form__item-error {
+    font-size: 12px;
+  }
+}

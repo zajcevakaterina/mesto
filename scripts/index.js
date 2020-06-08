@@ -38,7 +38,6 @@ const setEditFormInputValue = () => { // установка начальных �
 }
 
 const editFormSubmitHandler = (e) => { // сохранение данных, введенных пользователем
-  e.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
 }
@@ -49,30 +48,50 @@ editProfileForm.addEventListener('submit', editFormSubmitHandler);
 // Открытие/закрытие попапов
 const popupToggle = (currentPopup) => currentPopup.classList.toggle('popup_opened');
 
+const formInitialSetup = function(currentForm) { // проверка на валидность и установка состояния кнопки + обнуление сообщений об ошибке
+  const inputList = findInputs(currentForm, formValidationOptions.inputSelector);
+  const buttonEl = findButtons(currentForm, formValidationOptions.submitButtonSelector);
+  toggleButtonState(currentForm, buttonEl, formValidationOptions.inactiveButtonClass);
+
+  inputList.forEach(function(input) {
+    hideInputErrorMessage(input, formValidationOptions.errorClass, formValidationOptions.inputErrorClass);
+  })
+}
+
 // Cлушатели включения попапов
 
 editButton.addEventListener('click', () => { // попап редактирования профиля
   popupToggle(popupEditProfile);
   setEditFormInputValue();
+  formInitialSetup(editProfileForm);
 });
 
 addPlaceButton.addEventListener('click', () => {
   popupToggle(popupAddPlace); // попап добавления фотографий мест
   setPlaceholder();
+  formInitialSetup(addPlaceForm);
 });
 
 // Закрытие попапов - единое для всех
 const closePopup = (e) => {
-  if (e.target.classList.contains('popup_opened') || (e.target.classList.contains('popup__close-button')) || (e.target.classList.contains('form__button'))) {
+  if (e.target.classList.contains('popup_opened')
+  || (e.target.classList.contains('popup__close-button'))
+  || (e.target.classList.contains('form__button'))){
     e.target.closest(".popup").classList.toggle('popup_opened');
   };
+  if (e.key === 'Escape') {
+    popups.querySelector('.popup_opened').classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopup);
+  }
 };
 
 popups.addEventListener('click', closePopup);
+document.addEventListener('keydown', closePopup);
+//попапы закрываются при незаполненных полях, так как есть ощущение, что так более юзер-френдли.
+// при открытии все кривые введенные данные обнуляются и предлагается начать заново
 
 
 // ДОБАВЛЕНИЕ КАРТОЧЕК ПОЛЬЗОВАТЕЛЕМ
-
 
 const setPlaceholder = () => { //обнуляет значения, введенные пользователем при прошлом использовании popupAddPlace
   userPlaceName.value = '';
@@ -110,15 +129,15 @@ const createPlacesCards = (arr) => { // создание карточек из �
     prependCardToDOM(places, createCardElement(el));
   });
 }
-// надеюсь, в этот раз поняла правильно. чтобы функция prependCardToDom взяла нужную нам карточку с местом, вторым аргументом вызывается создание карточки
-// это уже последняя итерация проверки, пожаалуйста, не отправляйте меня в академ :)
 
 createPlacesCards(initialCards); //создание карточек "из коробки" при загрузке сайте
 
 addPlaceForm.addEventListener('submit', (e) => { //создание карточек по введенным данным пользователя
-  e.preventDefault();
   const link = userPlaceLink.value;
   const name = userPlaceName.value;
   prependCardToDOM(places, createCardElement({link, name}));
+
 })
 
+// ВАЛИДАЦИЯ ФОРМ
+enableValidation(formValidationOptions);
