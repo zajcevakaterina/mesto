@@ -56,7 +56,9 @@ function toggleButtonState(formEl, buttonEl, inactiveButtonClass) { // пере�
   const isValid = formEl.checkValidity();
   if(isValid) {
     buttonEl.classList.remove(inactiveButtonClass);
+    buttonEl.disabled = false;
   } else {
     buttonEl.classList.add(inactiveButtonClass);
+    buttonEl.disabled = true;
   }
 }
