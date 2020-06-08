@@ -11,12 +11,16 @@
   line-height: 1.21;
   border-radius: 2px;
   box-sizing: border-box;
+  cursor: pointer;
+}
+
+.form__button:disabled {
+  cursor: default;
 }
 
 .form__button:hover {
   opacity: .8;
   transition: opacity 200ms linear;
-  cursor: pointer;
 }
 
 @media screen and (min-width: 480px) {

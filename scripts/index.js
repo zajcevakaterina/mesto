@@ -64,12 +64,14 @@ editButton.addEventListener('click', () => { // попап редактиров�
   popupToggle(popupEditProfile);
   setEditFormInputValue();
   formInitialSetup(editProfileForm);
+  document.addEventListener('keydown', closePopup);
 });
 
 addPlaceButton.addEventListener('click', () => {
   popupToggle(popupAddPlace); // попап добавления фотографий мест
   setPlaceholder();
   formInitialSetup(addPlaceForm);
+  document.addEventListener('keydown', closePopup);
 });
 
 // Закрытие попапов - единое для всех
@@ -81,12 +83,12 @@ const closePopup = (e) => {
   };
   if (e.key === 'Escape') {
     popups.querySelector('.popup_opened').classList.remove('popup_opened');
-    document.removeEventListener('keydown', closePopup);
   }
+  document.removeEventListener('keydown', closePopup);
 };
 
 popups.addEventListener('click', closePopup);
-document.addEventListener('keydown', closePopup);
+
 //попапы закрываются при незаполненных полях, так как есть ощущение, что так более юзер-френдли.
 // при открытии все кривые введенные данные обнуляются и предлагается начать заново
 
