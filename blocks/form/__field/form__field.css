@@ -1,0 +1,9 @@
+.form__field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.form__field:first-of-type {
+  margin-bottom: 40px;
+}
