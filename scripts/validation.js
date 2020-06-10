@@ -1,6 +1,13 @@
-/*В этой теме в отдельном файле попробовала использовать подход с использованием function declaration. Он оказался,
-на мой взгляд, более читабельным, так как можно писать функции друг под другом: сначала та,
-которАЯ вызывает, затем та, которУЮ вызывают */
+const formValidationOptions = {
+  formSelector: '.form',
+  inputSelector: '.form__item',
+  submitButtonSelector: '.form__button',
+  inactiveButtonClass: 'form__button_inactive',
+  inputErrorClass: 'form__item_type_error',
+  errorClass: 'form__item-error_active'
+}
+
+enableValidation(formValidationOptions);
 
 function enableValidation(options) { // запуск валидации, отмена дефолтного поведения при отправке формы
   const formList = Array.from(document.querySelectorAll(options.formSelector));
