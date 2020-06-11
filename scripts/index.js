@@ -40,14 +40,21 @@ const setEditFormInputValue = () => { // установка начальных �
 const editFormSubmitHandler = (e) => { // сохранение данных, введенных пользователем
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  closePopup;
+  popupToggle(popupEditProfile);
 }
 
 editProfileForm.addEventListener('submit', editFormSubmitHandler);
 
 // УПРАВЛЕНИЕ ПОПАПАМИ
 // Открытие/закрытие попапов
-const popupToggle = (currentPopup) => currentPopup.classList.toggle('popup_opened');
+const popupToggle = (currentPopup) => {
+  currentPopup.classList.toggle('popup_opened');
+  if (currentPopup.classList.contains('popup_opened')) {
+    document.addEventListener('keydown', closePopupWithEscape);
+  } else {
+    document.removeEventListener('keydown', closePopupWithEscape);
+  }
+}
 
 const formInitialSetup = function(currentForm) { // проверка на валидность и установка состояния кнопки + обнуление сообщений об ошибке
   const inputList = findInputs(currentForm, formValidationOptions.inputSelector);
@@ -59,26 +66,18 @@ const formInitialSetup = function(currentForm) { // проверка на вал
   })
 }
 
-const openPopup = (popup) => { // добавила эту функцию, чтобы на все попапы было одинаково: открытие + добавление слушателя для Escape
-  popupToggle(popup);
-  document.addEventListener('keydown', closePopupWithEscape);
-}
-
 const closePopupWithEscape = (e) => { // закрытие попапа по Escape
   if (e.key === 'Escape') {
     popupToggle(popups.querySelector('.popup_opened'));
-    document.removeEventListener('keydown', closePopup);
   }
 }
 
-// Закрытие попапов по клику - функция объединяет popupToggle и снятие слушателя на Escape, который добавляется при открытии любого попапа
+//Закрытие попапов по клику
 const closePopup = (e) => {
   if (e.target.classList.contains('popup_opened')
-  || (e.target.classList.contains('popup__close-button'))
-  || (e.target.classList.contains('form__button'))){ //класс кнопки, кажется, отсюда убрать нельзя, потому что иначе в ф-ции submit надо будет вызывать toggle и removeEventlisneter отдельно. сейчас я добавила просто вызов closePopup из Submit
+  || (e.target.classList.contains('popup__close-button'))){
     popupToggle(e.target.closest(".popup"));
   };
-  document.removeEventListener('keydown', closePopup);
 };
 
 popups.addEventListener('click', closePopup);
@@ -87,13 +86,13 @@ popups.addEventListener('click', closePopup);
 // Cлушатели включения попапов
 
 editButton.addEventListener('click', () => { // попап редактирования профиля
-  openPopup(popupEditProfile); // тут и далее новая ф-ция
+  popupToggle(popupEditProfile);
   setEditFormInputValue();
   formInitialSetup(editProfileForm);
 });
 
 addPlaceButton.addEventListener('click', () => { // попап добавления фотографий мест
-  openPopup(popupAddPlace);
+  popupToggle(popupAddPlace);
   setPlaceholder();
   formInitialSetup(addPlaceForm);
 });
@@ -111,7 +110,7 @@ const likeToggle = (e) => e.target.classList.toggle('places__like_active'); // �
 const deletePlaceCard = (e) => e.target.parentElement.remove(); // удаление карточки при нажатии на "корзину"
 
 const popupPlacesToggle = (e, name) => { // открытие popupSeeImage для нужной карточки
-  openPopup(popupSeeImage);
+  popupToggle(popupSeeImage);
   popupSeeImage.querySelector('.popup__image').src = e.target.src;
   popupSeeImage.querySelector('.popup__image-caption').textContent = name;
 };
@@ -144,5 +143,5 @@ addPlaceForm.addEventListener('submit', (e) => { //создание карточ
   const link = userPlaceLink.value;
   const name = userPlaceName.value;
   prependCardToDOM(places, createCardElement({link, name}));
-  closePopup;
+  popupToggle(popupAddPlace);
 })
