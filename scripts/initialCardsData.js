@@ -1,5 +1,7 @@
 // Данные для карточек "из коробки"
-const initialCards = [
+// Оставила пока, так как в одном из ревбю была рекомендация вынести их отдельно
+
+export const initialCards = [
   {
     name: 'Казань',
     link: 'https://images.unsplash.com/photo-1584270692240-0411d322e4b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=652&q=80'

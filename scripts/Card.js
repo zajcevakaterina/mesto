@@ -1,0 +1,44 @@
+export default class Card {
+  constructor(el, cardSelector, popupPlacesToggle) {
+    this._name = el.name;
+    this._link = el.link;
+    this._cardSelector = cardSelector;
+    this._popupPlacesToggle = popupPlacesToggle;
+  }
+
+  _getTemplate() {
+    const cardElement = document
+      .querySelector(this._cardSelector)
+      .content
+      .querySelector('.places__card')
+      .cloneNode(true);
+
+    return cardElement;
+  }
+
+  _setEventListeners() {
+    this._element.querySelector('.places__like').addEventListener('click', (e) => this._likeToggle(e));
+    this._element.querySelector('.places__delete-button').addEventListener('click', (e) => this._deletePlaceCard(e));
+    this._cardImage.addEventListener('click', (e) => this._popupPlacesToggle(e, this._name));
+  }
+
+  _likeToggle(e) {
+    e.target.classList.toggle('places__like_active'); // включение/выключение лайков при нажатии
+  }
+
+  _deletePlaceCard(e) {
+    e.target.parentElement.remove(); // удаление карточки при нажатии на "корзину"
+    this._element = null;
+  }
+
+  generateCard() { // создание карточки из шаблона и наполнение содержимым
+    this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector('.places__image');
+    this._cardImage.src = this._link;
+    this._cardImage.alt = `Фотография места под названием ${this._name}`;
+    this._element.querySelector('.places__title').textContent = this._name;
+    this._setEventListeners();
+
+    return this._element;
+  }
+}
