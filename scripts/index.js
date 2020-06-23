@@ -91,14 +91,12 @@ popups.addEventListener('click', closePopup);
 editButton.addEventListener('click', () => { // попап редактирования профиля
   popupToggle(popupEditProfile);
   setEditFormInputValue();
-  editProfileValidator.enableValidation();
   editProfileValidator.formInitialCheck();
 });
 
 addPlaceButton.addEventListener('click', () => { // попап добавления фотографий мест
   popupToggle(popupAddPlace);
   setPlaceholder();
-  addPlaceValidator.enableValidation();
   addPlaceValidator.formInitialCheck();
 });
 
@@ -117,7 +115,7 @@ const popupPlacesToggle = (e, name) => { // открытие popupSeeImage дл�
 };
 
 
-const createCardElement = (el) => new Card(el, '.places-card-template', popupPlacesToggle ).generateCard(); // Создание карточек из класса
+const createCardElement = (el) => new Card(el, '.places-card-template', popupPlacesToggle).generateCard(); // Создание карточек из класса
 
 const prependCardToDOM = function(DOMContainer, card) { // добавление карточки в DOM
   DOMContainer.prepend(card);
@@ -141,3 +139,7 @@ addPlaceForm.addEventListener('submit', (e) => { //создание карточ
 // Создание валидаторов для каждой из форм
 const editProfileValidator = new FormValidator(formValidationOptions, editProfileForm);
 const addPlaceValidator = new FormValidator(formValidationOptions, addPlaceForm);
+
+// Запуск валидации форм
+editProfileValidator.enableValidation();
+addPlaceValidator.enableValidation();

@@ -17,17 +17,17 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._element.querySelector('.places__like').addEventListener('click', (e) => this._likeToggle(e));
-    this._element.querySelector('.places__delete-button').addEventListener('click', (e) => this._deletePlaceCard(e));
+    this._element.querySelector('.places__like').addEventListener('click', () => this._likeToggle());
+    this._element.querySelector('.places__delete-button').addEventListener('click', () => this._deletePlaceCard());
     this._cardImage.addEventListener('click', (e) => this._popupPlacesToggle(e, this._name));
   }
 
-  _likeToggle(e) {
-    e.target.classList.toggle('places__like_active'); // включение/выключение лайков при нажатии
+  _likeToggle() {
+    this._element.querySelector('.places__like').classList.toggle('places__like_active'); // включение/выключение лайков при нажатии
   }
 
-  _deletePlaceCard(e) {
-    e.target.parentElement.remove(); // удаление карточки при нажатии на "корзину"
+  _deletePlaceCard() {
+    this._element.remove(); // удаление карточки при нажатии на "корзину"
     this._element = null;
   }
 
