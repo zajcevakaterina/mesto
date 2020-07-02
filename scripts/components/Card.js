@@ -1,9 +1,9 @@
 export default class Card {
-  constructor(el, cardSelector, popupPlacesToggle) {
+  constructor(el, cardSelector, { handleCardClick }) {
     this._name = el.name;
     this._link = el.link;
     this._cardSelector = cardSelector;
-    this._popupPlacesToggle = popupPlacesToggle;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -19,7 +19,7 @@ export default class Card {
   _setEventListeners() {
     this._element.querySelector('.places__like').addEventListener('click', () => this._likeToggle());
     this._element.querySelector('.places__delete-button').addEventListener('click', () => this._deletePlaceCard());
-    this._cardImage.addEventListener('click', (e) => this._popupPlacesToggle(e, this._name));
+    this._cardImage.addEventListener('click', (e) => this._handleCardClick(e, this._name));
   }
 
   _likeToggle() {

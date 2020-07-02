@@ -4,21 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
-
   <title>Mesto Russia</title>
 </head>
 
 <body>
   <div class="root">
     <header class="header root__section">
-      <img src="./images/header/logo.svg" alt="Слово Место латиницей и выше слово Russia. Логотип."
+      <img src="../images/header/logo.svg" alt="Слово Место латиницей и выше слово Russia. Логотип."
         class="header__logo">
     </header>
 
     <main class="main root__section">
       <section class="profile">
-        <img src="./images/profile/user-avatar.jpg" alt="Фотография путешественника Жак-Ив Кусто."
+        <img src="../images/profile/user-avatar.jpg" alt="Фотография путешественника Жак-Ив Кусто."
           class="profile__avatar">
         <div class="profile__title">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -58,7 +56,7 @@
             <label class="form__field">
               <input
                 type="text"
-                name="profile-name"
+                name="name"
                 id="profile-name"
                 class="form__item form__item_el_name"
                 placeholder="Имя и фамилия"
@@ -74,7 +72,7 @@
             <label class="form__field">
               <input
                 type="text"
-                name="profile-job"
+                name="job"
                 id="profile-job"
                 placeholder="Род занятий"
                 class="form__item form__item_el_job"
@@ -102,7 +100,7 @@
             <label class="form__field">
               <input
               type="text"
-              name="place-name"
+              name="name"
               id="place-name"
               class="form__item form__item_el_place-name"
               minlength="1"
@@ -116,7 +114,7 @@
 
             <label class="form__field">
               <input type="url"
-              name="place-link"
+              name="link"
               id="place-link"
               placeholder="Ссылка на картинку"
               class="form__item form__item_el_place-link"
@@ -141,10 +139,6 @@
       </div>
     </section>
   </div>
-  <script type="module" src="./scripts/initialCardsData.js"></script>
-  <script type="module" src="./scripts/FormValidator.js"></script>
-  <script type="module"src="./scripts/Card.js"></script>
-  <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>
