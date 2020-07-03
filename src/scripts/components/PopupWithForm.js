@@ -1,5 +1,6 @@
 import Popup from './Popup.js';
-import { popups, formValidationOptions } from '../utils/constants.js';
+/* убрала импорт объекта с селекторами, так как импорт, насколько я поняла,
+не умеет брать конкретное свойство (например, formValidationOptions.inputSelector) */
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, form, submitForm) {
@@ -9,7 +10,7 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    this._inputList = this._form.querySelectorAll(formValidationOptions.inputSelector);
+    this._inputList = this._form.querySelectorAll('.form__item');
     this._formValues = {};
     this._inputList.forEach(input => {
       this._formValues[input.name] = input.value;
@@ -18,12 +19,7 @@ export default class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    popups.addEventListener('click', (e) => {
-      if ((e.target.classList.contains('popup_opened')) || (e.target.classList.contains('popup__close-button'))) {
-        this.close()
-      }
-    }
-    );
+    super.setEventListeners();
     this._form.addEventListener('submit', () => {
       const inputValues = this._getInputValues();
       this._submitForm(inputValues)
@@ -31,8 +27,7 @@ export default class PopupWithForm extends Popup {
   }
 
   close() {
-    this._popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', (e) => this._handleEscClose(e));
+    super.close();
     this._form.reset();
   }
 }

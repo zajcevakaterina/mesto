@@ -19,7 +19,7 @@ export default class Card {
   _setEventListeners() {
     this._element.querySelector('.places__like').addEventListener('click', () => this._likeToggle());
     this._element.querySelector('.places__delete-button').addEventListener('click', () => this._deletePlaceCard());
-    this._cardImage.addEventListener('click', (e) => this._handleCardClick(e, this._name));
+    this._cardImage.addEventListener('click', (e) => this._handleCardClick(this._name, this._link));
   }
 
   _likeToggle() {

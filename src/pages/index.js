@@ -2,14 +2,6 @@ import './index.css';
 
 import { initialCards } from '../scripts/utils/initialCardsData.js';
 import {
-  addPlaceForm,
-  userPlaceName,
-  userPlaceLink,
-  editProfileForm,
-  nameInput,
-  jobInput,
-  editButton,
-  addPlaceButton,
   formValidationOptions,
   cardTemplateSelector,
   profileNameSelector,
@@ -27,6 +19,19 @@ import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 
+// Форма добавление карточки места пользователем
+export const addPlaceForm = document.querySelector('.form_type_add-place');
+export const userPlaceName = addPlaceForm.querySelector('.form__item_el_place-name');
+export const userPlaceLink = addPlaceForm.querySelector('.form__item_el_place-link');
+
+// Форма редактирования профайла и инпуты
+export const editProfileForm = document.querySelector('.form_type_edit-profile');
+export const nameInput = editProfileForm.querySelector('.form__item_el_name');
+export const jobInput = editProfileForm.querySelector('.form__item_el_job');
+
+// Кнопки для открытия попапов с формой
+export const editButton = document.querySelector('.profile__edit-button');
+export const addPlaceButton = document.querySelector('.profile__add-button');
 
 // РЕДАКТИРОВАНИЕ ПРОФАЙЛА
 const setEditFormInputValue = ({ name, job }) => { // установка начальных данных в форме
@@ -50,8 +55,8 @@ const createCard = (placesData) => { // функция создания карт
     renderer: (item) => {
       const card = new Card(item, cardTemplateSelector,
         {
-          handleCardClick: (e, name) => {
-            popupSeeImage.open(e, name);
+          handleCardClick: (name, link) => {
+            popupSeeImage.open(name, link);
           }
         });
       const cardElement = card.generateCard();
