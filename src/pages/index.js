@@ -49,30 +49,32 @@ const userInfo = new UserInfo({ userName: profileNameSelector, userJob: profileJ
 
 // СОЗДАНИЕ КАРТОЧЕК
 
-const createCard = (placesData) => { // функция создания карточек
-  const cardList = new Section({
-    items: placesData,
-    renderer: (item) => {
-      const card = new Card(item, cardTemplateSelector,
-        {
-          handleCardClick: (name, link) => {
-            popupSeeImage.open(name, link);
-          }
-        });
-      const cardElement = card.generateCard();
-      cardList.addItem(cardElement);
-    }
-  }, placesContainerSelector);
-  return cardList;
+const createCard = (cardData) => { // создание конкретного экземпляра карточки
+  const card = new Card(cardData, cardTemplateSelector,
+    {
+      handleCardClick: (name, link) => {
+        popupSeeImage.open(name, link);
+      }
+    });
+  const cardElement = card.generateCard();
+  return cardElement;
 }
+
+const initialCardList = new Section({ // создание одного экземпляра класса section
+  items: initialCards,
+  renderer: (item) => {
+    const card = createCard(item);
+    initialCardList.addItem(card);
+  }
+}, placesContainerSelector);
+
+initialCardList.renderItems(); // создание первоначальных карточек
 
 const addPlaceSubmit = ({ name, link }) => { //создание карточек по введенным данным пользователя
-  const userPlaceData = [{ name, link }];
-  createCard(userPlaceData).renderItems();
+  const card = createCard({ name, link });
+  initialCardList.addItem(card);
   popupAddPlace.close();
 }
-
-createCard(initialCards).renderItems(); //создание карточек при загрузке страницы
 
 // УПРАВЛЕНИЕ ПОПАПАМИ
 // Создание экземпляров попапов всех видов
