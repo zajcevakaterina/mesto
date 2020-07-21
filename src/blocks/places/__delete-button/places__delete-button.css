@@ -11,6 +11,7 @@
   width: 18px;
   height: 19px;
   cursor: pointer;
+  display: none;
 }
 
 .places__delete-button:hover {
