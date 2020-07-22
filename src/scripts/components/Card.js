@@ -18,7 +18,7 @@ export default class Card {
       .content
       .querySelector('.places__card')
       .cloneNode(true);
-      
+
     if (this._ownership) {
       cardElement.querySelector('.places__delete-button').classList.add('places__delete-button_active');
     }

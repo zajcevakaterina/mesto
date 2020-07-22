@@ -22,7 +22,6 @@ import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import PopupWithCardDelete from '../scripts/components/PopupWithCardDelete.js';
-import { isIterable } from 'core-js';
 
 // Форма добавление карточки места пользователем
 const addPlaceForm = document.querySelector('.form_type_add-place');
@@ -36,7 +35,6 @@ const jobInput = editProfileForm.querySelector('.form__item_el_job');
 
 // Форма редактирования аватара
 const editAvatarForm = document.querySelector('.form_type_edit-avatar');
-const avatarLink = editAvatarForm.querySelector('.form__item_el_avatar-link');
 
 // Форма удаления карточки с местом
 const deletePlaceForm = document.querySelector('.form_type_delete-place');
@@ -77,11 +75,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
     function renderLoading(isLoading, buttonEl, buttonText) {
       if (buttonEl) {
-        if (isLoading) {
-          buttonEl.textContent = 'Сохранение';
-        } else {
-          buttonEl.textContent = buttonText;
-        }
+        isLoading ? buttonEl.textContent = 'Сохранение' : buttonEl.textContent = buttonText;
       }
     }
 
@@ -94,8 +88,10 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
           user.setUserInfo(res.name, res.about);
         })
         .catch(err => console.error(err))
-        .finally(() => renderLoading(false, editProfileSubmitButton, 'Сохранить'));
-      popupEditProfile.close();
+        .finally(() => {
+          renderLoading(false, editProfileSubmitButton, 'Сохранить');
+          popupEditProfile.close();
+        });
     }
 
     const setEditFormInputValue = ({ name, job }) => { // установка начальных данных в форме
@@ -109,58 +105,50 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       api.setUserAvatar(inputValues.link)
         .then(res => {
           user.setUserAvatar(res.avatar);
-          popupEditAvatar.close()
         })
         .catch(err => console.error(err))
-        .finally(() => renderLoading(false, editAvatarSubmitButton, 'Сохранить'));
+        .finally(() => {
+          renderLoading(false, editAvatarSubmitButton, 'Сохранить');
+          popupEditAvatar.close();
+        });
     }
 
     const handleCardClick = (name, link) => {
       popupSeeImage.open(name, link);
     }
 
-    const createCard = (cardData) => { // создание конкретного экземпляра карточки
+    const createCardItem = (cardData, cardTemplateSelector, checkDeletion, ownership) => {
+      const card = new Card(cardData, cardTemplateSelector,
+        {
+          handleCardClick: handleCardClick,
+          handleLikeClick: (likes, cardId) => {
+            if (likes.some(like => like._id === userId)) {
+              api.deleteLike(cardId)
+                .then(res => card.updateLikes(res.likes))
+                .catch(err => console.error(err))
+            } else {
+              api.addLike(cardId)
+                .then(res => card.updateLikes(res.likes))
+                .catch(err => console.error(err))
+            }
+          },
+          handleCheckDeletion: checkDeletion
+        }, ownership);
+      const cardElement = card.generateCard(userId);
+      return cardElement;
+    }
+
+    const createCardWithOwnerCheck = (cardData) => { // создание конкретного экземпляра карточки
 
       if (cardData.owner._id === userId) {
-        const card = new Card(cardData, cardTemplateSelector,
-          {
-            handleCardClick: handleCardClick,
-            handleLikeClick: (likes, cardId) => {
-              if (likes.some(like => like._id === userId)) {
-                api.deleteLike(cardId)
-                  .then(res => card.updateLikes(res.likes))
-                  .catch(err => console.error(err))
-              } else {
-                api.addLike(cardId)
-                  .then(res => card.updateLikes(res.likes))
-                  .catch(err => console.error(err))
-              }
-            },
-            handleCheckDeletion: (card, cardId) => {
-              popupDeletePlace.open();
-              popupDeletePlace.setSubmitListener(card, cardId);
-            }
-          }, true);
-        const cardElement = card.generateCard();
-        return cardElement;
-      } else {
-        const card = new Card(cardData, cardTemplateSelector,
-          {
-            handleCardClick: handleCardClick,
-            handleLikeClick: (likes, cardId) => {
-              if (likes.some(like => like._id === userId)) {
-                api.deleteLike(cardId)
-                  .then(res => card.updateLikes(res.likes))
-                  .catch(err => console.error(err))
-              } else {
-                api.addLike(cardId)
-                  .then(res => card.updateLikes(res.likes))
-                  .catch(err => console.error(err))
-              }
-            }
-          }, false);
-        const cardElement = card.generateCard(userId);
-        return cardElement;
+        return createCardItem(cardData, cardTemplateSelector,
+          function handleCheckDeletion(card, cardId) {
+            popupDeletePlace.open();
+            popupDeletePlace.setSubmitListener(card, cardId);
+          }, true)
+      }
+      else {
+        return createCardItem(cardData, cardTemplateSelector, null, false)
       }
     }
 
@@ -169,7 +157,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     const cardList = new Section({ // создание одного экземпляра класса section
       items: items.reverse(),
       renderer: (item) => {
-        const card = createCard(item);
+        const card = createCardWithOwnerCheck(item);
         cardList.addItem(card);
       }
     }, placesContainerSelector)
@@ -181,12 +169,14 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
       api.addCard(name, link)
         .then(info => {
-          const card = createCard(info);
+          const card = createCardWithOwnerCheck(info);
           cardList.addItem(card);
-          popupAddPlace.close();
         })
         .catch(err => console.log(err))
-        .finally(() => renderLoading(false, addPlaceSubmitButton, 'Создать'));
+        .finally(() => {
+          renderLoading(false, addPlaceSubmitButton, 'Создать');
+          popupAddPlace.close();
+        });
     }
 
     const deleteCardSubmit = (card, cardId) => { // удаление карточки
@@ -196,8 +186,10 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
           card.remove();
         })
         .catch(err => console.log(err))
-        .finally(() => renderLoading(false, deletePlaceSubmitButton, 'Да'));
-      popupDeletePlace.close();
+        .finally(() => {
+          renderLoading(false, deletePlaceSubmitButton, 'Да');
+          popupDeletePlace.close();
+        });
     };
 
     const setPlaceholder = () => { //обнуляет значения, введенные пользователем при прошлом использовании popupAddPlace
