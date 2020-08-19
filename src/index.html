@@ -16,13 +16,13 @@
 
     <main class="main root__section">
       <section class="profile">
-        <img src="../src/images/profile/user-avatar.jpg" alt="Фотография путешественника Жак-Ив Кусто."
-          class="profile__avatar">
+        <img alt="Фотография пользователя." class="profile__avatar">
+        <div class="profile__edit-avatar-button"></div>
         <div class="profile__title">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button type="button" class="profile__edit-button"></button>
         </div>
-        <p class="profile__subtitle">Исследователь океана</p>
+        <p class="profile__subtitle"></p>
         <button type="button" class="profile__add-button"></button>
       </section>
 
@@ -41,7 +41,11 @@
         <img alt="" class="places__image">
         <div class="places__desc">
           <h2 class="places__title"></h2>
-          <button type="button" class="places__like"></button>
+          <div class="places__like-info">
+            <button type="button" class="places__like"></button>
+            <span class="places__like-amount">0</span>
+          </div>
+
         </div>
       </div>
     </template>
@@ -54,39 +58,39 @@
           <form class="form form_type_edit-profile" name="edit-profile-form" novalidate>
             <h2 class="form__heading">Редактировать профиль</h2>
             <label class="form__field">
-              <input
-                type="text"
-                name="name"
-                id="profile-name"
-                class="form__item form__item_el_name"
-                placeholder="Имя и фамилия"
-                minlength="2"
-                maxlength="40"
-                required>
-              <span
-                class="form__item-error"
-                id="profile-name-error"></span>
+              <input type="text" name="name" id="profile-name" class="form__item form__item_el_name"
+                placeholder="Имя и фамилия" minlength="2" maxlength="40" required>
+              <span class="form__item-error" id="profile-name-error"></span>
             </label>
 
 
             <label class="form__field">
-              <input
-                type="text"
-                name="job"
-                id="profile-job"
-                placeholder="Род занятий"
-                class="form__item form__item_el_job"
-                minlength="2"
-                maxlength="200"
-                required>
-              <span
-                class="form__item-error"
-                id="profile-job-error"></span>
+              <input type="text" name="job" id="profile-job" placeholder="Род занятий"
+                class="form__item form__item_el_job" minlength="2" maxlength="200" required>
+              <span class="form__item-error" id="profile-job-error"></span>
             </label>
 
 
             <button type="submit" value="Сохранить форму"
               class="form__button form__button_type_edit-profile">Сохранить</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- попап редактирования аватара пользователя -->
+      <div class="popup popup_type_edit-avatar">
+        <div class="popup__container popup__container_visibility_visible">
+          <button type="button" class="popup__close-button"></button>
+          <form class="form form_type_edit-avatar" name="edit-avatar-form" novalidate>
+            <h2 class="form__heading">Обновить аватар</h2>
+            <label class="form__field">
+              <input type="url" name="link" id="avatar-link" placeholder="Ссылка на аватар"
+                class="form__item form__item_el_avatar-link" required>
+              <span class="form__item-error" id="avatar-link-error"></span>
+            </label>
+
+            <button type="submit" value="Сохранить форму"
+              class="form__button form__button_type_edit-avatar form__button_no-margin">Сохранить</button>
           </form>
         </div>
       </div>
@@ -98,34 +102,31 @@
           <form class="form form_type_add-place" name="add-place-form" novalidate>
             <h2 class="form__heading">Новое место</h2>
             <label class="form__field">
-              <input
-              type="text"
-              name="name"
-              id="place-name"
-              class="form__item form__item_el_place-name"
-              minlength="1"
-              maxlength="30"
-              placeholder="Название"
-              required>
-            <span
-              class="form__item-error"
-              id="place-name-error"></span>
+              <input type="text" name="name" id="place-name" class="form__item form__item_el_place-name" minlength="1"
+                maxlength="30" placeholder="Название" required>
+              <span class="form__item-error" id="place-name-error"></span>
             </label>
 
             <label class="form__field">
-              <input type="url"
-              name="link"
-              id="place-link"
-              placeholder="Ссылка на картинку"
-              class="form__item form__item_el_place-link"
-              required>
-            <span
-              class="form__item-error"
-              id="place-link-error"></span>
+              <input type="url" name="link" id="place-link" placeholder="Ссылка на картинку"
+                class="form__item form__item_el_place-link" required>
+              <span class="form__item-error" id="place-link-error"></span>
             </label>
 
             <button type="submit" value="Сохранить форму"
               class="form__button form__button_type_add-place">Создать</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- попап удаления карточки места -->
+      <div class="popup popup_type_delete-place">
+        <div class="popup__container popup__container_visibility_visible">
+          <button type="button" class="popup__close-button"></button>
+          <form class="form form_type_delete-place" name="delete-place-form" novalidate>
+            <h2 class="form__heading">Вы уверены?</h2>
+            <button type="submit" value="Да"
+              class="form__button form__button_type_delete-place form__button_no-margin">Да</button>
           </form>
         </div>
       </div>
