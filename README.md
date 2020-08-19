@@ -1,4 +1,4 @@
-# MESTO - https://zajcevakaterina.github.io/mesto/index.html
+# MESTO (версия на чистом JavaScript)
 ## Автор проекта - Екатерина Зайцева.
 *Выполнен в рамках курса на Яндекс.Практикум.*
 
